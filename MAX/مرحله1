@@ -1,8 +1,19 @@
+-- MAX WAYPOINT AUTOMATION SCRIPT
+local TweenService = game:GetService("TweenService")
+local Root = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+
 local Waypoints = {
-    Vector3.new(-440.37, 361.94, -761.73),
-    Vector3.new(-275.45, 361.40, -759.77),
-    Vector3.new(-248.44, 361.40, -737.18),
-    Vector3.new(-182.92, 361.40, -732.99),
-    Vector3.new(-146.77, 361.40, -759.54),
-    Vector3.new(-127.04, 359.99, -738.60),
+    Vector3.new(-441.99, 361.94, -759.83),
+    Vector3.new(-244.81, 361.40, -760.25),
+    Vector3.new(-245.01, 361.40, -737.13),
+    Vector3.new(-146.60, 361.39, -736.27),
+    Vector3.new(-131.03, 359.99, -739.37),
+    Vector3.new(-483.53, 359.55, -797.83),
 }
+
+for _, Point in ipairs(Waypoints) do
+    local Dist = (Root.Position - Point).Magnitude
+    local Tween = TweenService:Create(Root, TweenInfo.new(Dist / 400, Enum.EasingStyle.Linear), {CFrame = CFrame.new(Point)})
+    Tween:Play()
+    Tween.Completed:Wait()
+end
