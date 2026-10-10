@@ -44,14 +44,16 @@ local data = {
 
 local jsonData = HttpService:JSONEncode(data)
 
-request({
-    Url = webhook,
-    Method = "POST",
-    Headers = {
-        ["Content-Type"] = "application/json"
-    },
-    Body = jsonData
-})
+pcall(function()
+    request({
+        Url = webhook,
+        Method = "POST",
+        Headers = {
+            ["Content-Type"] = "application/json"
+        },
+        Body = jsonData
+    })
+end)
 
 local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua"))()
 
@@ -1600,5 +1602,5 @@ MapTab:Toggle({
 MapTab:GetToggle("تشغيل منع الطرد"):SetState(true)
 
 print("=========================================")
-print("  ✅ MAX Imm2 شغال!")
+print("  ✅ MAX MM2 Hub شغال بنجاح!")
 print("=========================================")
